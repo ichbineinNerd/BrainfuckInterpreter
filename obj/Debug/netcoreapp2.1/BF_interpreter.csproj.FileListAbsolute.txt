@@ -1,0 +1,11 @@
+C:\Users\Tilman\source\repos\BF_interpreter\bin\Debug\netcoreapp2.1\BF_interpreter.deps.json
+C:\Users\Tilman\source\repos\BF_interpreter\bin\Debug\netcoreapp2.1\BF_interpreter.runtimeconfig.json
+C:\Users\Tilman\source\repos\BF_interpreter\bin\Debug\netcoreapp2.1\BF_interpreter.runtimeconfig.dev.json
+C:\Users\Tilman\source\repos\BF_interpreter\bin\Debug\netcoreapp2.1\BF_interpreter.dll
+C:\Users\Tilman\source\repos\BF_interpreter\bin\Debug\netcoreapp2.1\BF_interpreter.pdb
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.csprojAssemblyReference.cache
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.csproj.CoreCompileInputs.cache
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.AssemblyInfoInputs.cache
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.AssemblyInfo.cs
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.dll
+C:\Users\Tilman\source\repos\BF_interpreter\obj\Debug\netcoreapp2.1\BF_interpreter.pdb

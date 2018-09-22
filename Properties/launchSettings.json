@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BF_interpreter": {
+      "commandName": "Project",
+      "commandLineArgs": "overflowtest.bf"
+    }
+  }
+}
