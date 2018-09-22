@@ -23,7 +23,7 @@ namespace BF_interpreter
 				return;
 			}					    
 
-			new BFExecuter() {interactive = args.Contains("i") }.ExecuteProgram(File.ReadAllText(args[0]));
+			new BFExecuter() {debug = args.Contains("d"), interactive = args.Contains("i") }.ExecuteProgram(File.ReadAllText(args[0]));
 		}
 
 		private readonly byte[] bytes = new byte[(int)Math.Pow(2, 16)];
@@ -32,6 +32,7 @@ namespace BF_interpreter
 
 		private int inputindex = 0;
 		private int pointer = 0;
+		private bool debug;
 
 		private void ExecuteProgram(string whole)
 		{
@@ -92,21 +93,24 @@ namespace BF_interpreter
 
 		private void evaluateExpression(char c, int index, string whole)
 		{
-			for (int i = 0; i < whole.Length; i++)
+			if(debug)
 			{
-				if (i < index)
+				for(int i = 0; i < whole.Length; i++)
 				{
+					if(i < index)
+					{
+						Console.Write(whole[i]);
+						continue;
+					}
+					if(i == index)
+					{
+						Console.Write(whole[i] + "V");
+						continue;
+					}
 					Console.Write(whole[i]);
-					continue;
 				}
-				if (i == index)
-				{
-					Console.Write(whole[i] + "V");
-					continue;
-				}
-				Console.Write(whole[i]);
-			}
-			Console.Write("\n");
+				Console.Write("\n");
+			}				
 
 			if (c == '>')
 			{
