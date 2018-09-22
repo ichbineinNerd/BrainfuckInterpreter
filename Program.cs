@@ -6,8 +6,8 @@ using System.Runtime.Serialization;
 namespace BF_interpreter
 {
 	class BFExecuter
-	{
-		private bool debug = false;
+	{							
+		private bool interactive = false;
 
 		static void Main(string[] args)
 		{
@@ -23,7 +23,7 @@ namespace BF_interpreter
 				return;
 			}					    
 
-			new BFExecuter() { debug = args.Contains("d") }.ExecuteProgram(File.ReadAllText(args[0]));
+			new BFExecuter() {interactive = args.Contains("i") }.ExecuteProgram(File.ReadAllText(args[0]));
 		}
 
 		private readonly byte[] bytes = new byte[(int)Math.Pow(2, 16)];
@@ -35,10 +35,14 @@ namespace BF_interpreter
 
 		private void ExecuteProgram(string whole)
 		{
-			string[] wholeasarray = whole.Split('!', 2);
+			string v = whole;
 
-			string v = wholeasarray[0];
-			input = wholeasarray.Length == 2 ? wholeasarray[1] : "";
+			if(!interactive)
+			{
+				string[] wholeasarray = whole.Split('!', 2);
+				input = wholeasarray.Length == 2 ? wholeasarray[1] : "";
+				v = wholeasarray[0];
+			}
 
 			for (int i = 0; i < v.Length; i++)
 			{
@@ -123,16 +127,22 @@ namespace BF_interpreter
 				Console.Write((char)bytes[pointer]);
 			}else if (c == ',')
 			{
-				try
+				if(!interactive)
 				{
-					bytes[pointer] = (byte)input[inputindex++];
-				}catch (IndexOutOfRangeException)
+					try
+					{
+						bytes[pointer] = (byte)input[inputindex++];
+					} catch(IndexOutOfRangeException)
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.Write("\nAn attempt was made to access index " + (inputindex - 1) + " while the input length is only " + input.Length);
+						Console.ResetColor();
+						System.Environment.Exit(1);
+					}
+				}else
 				{
-					Console.ForegroundColor = ConsoleColor.Red;
-					Console.Write("\nAn attempt was made to access index " + (inputindex - 1) + " while the input length is only " + input.Length);
-					Console.ResetColor();
-					System.Environment.Exit(1);
-				}	
+					bytes[pointer] = (byte)Console.ReadKey().KeyChar;
+				}
 			}
 		}
 	}
